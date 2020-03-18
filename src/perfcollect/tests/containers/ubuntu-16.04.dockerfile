@@ -14,3 +14,4 @@ ENV COMPlus_PerfMapEnabled 1
 ENV COMPlus_EnableEventLog 1
 
 # Run the test harness.
+CMD ./perfcollect install
