@@ -130,7 +130,7 @@ namespace Microsoft.Diagnostics.Tracing
         /// </summary>
         /// <param name="ev">Event to re-process.</param>
         [Obsolete("Not obsolete but experimental.   We may change this in the future.")]
-        public void ReprocessEvent(TraceEvent ev)
+        public override void ReprocessEvent(TraceEvent ev)
         {
             RawDispatch(ev.eventRecord);
         }
@@ -139,7 +139,8 @@ namespace Microsoft.Diagnostics.Tracing
         /// The log moduleFile that is being processed (if present)
         /// TODO: what does this do for Real time sessions?
         /// </summary>
-        public string LogFileName { get { return logFiles[0].LogFileName; } }
+        public override string LogFileName { get { return logFiles[0].LogFileName; } }
+
         /// <summary>
         /// The name of the session that generated the data. 
         /// </summary>

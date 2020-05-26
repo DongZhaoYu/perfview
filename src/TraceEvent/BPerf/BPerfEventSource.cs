@@ -146,10 +146,18 @@ namespace Microsoft.Diagnostics.Tracing
 
         public override long Size => File.Exists(this.btlFilePath) ? new FileInfo(this.btlFilePath).Length : 0;
 
+        public override string LogFileName => File.Exists(this.btlFilePath) ? Path.GetFileName(this.btlFilePath) : null;
+
         public override bool Process()
         {
             this.ProcessInner();
             return true;
+        }
+
+        [Obsolete("only for XAP to test")]
+        public override void ReprocessEvent(TraceEvent ev)
+        {
+            this.Dispatch(ev);
         }
 
         internal override string ProcessName(int processID, long time100ns)
