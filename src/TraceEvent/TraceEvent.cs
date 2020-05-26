@@ -282,7 +282,7 @@ namespace Microsoft.Diagnostics.Tracing
         /// <summary>
         /// The log file name this trace event source will write
         /// </summary>
-        public abstract string LogFileName { get; }
+        public virtual string LogFileName { get; }
 
         /// <summary>
         /// The size of the trace, if it is known.  Will return 0 if it is not known.  
@@ -3209,7 +3209,10 @@ namespace Microsoft.Diagnostics.Tracing
         }
 
         [Obsolete("Not obsolete only for XAP test.   We may change this in the future.")]
-        public abstract void ReprocessEvent(TraceEvent ev);
+        public virtual void ReprocessEvent(TraceEvent ev)
+        {
+            throw new NotImplementedException();
+        }
 
         /// <summary>
         /// Once a client has subscribed to the events of interest, calling Process actually causes
